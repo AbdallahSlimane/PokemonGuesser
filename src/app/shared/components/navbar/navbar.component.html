@@ -1,0 +1,17 @@
+<link href='https://fonts.googleapis.com/css?family=Irish Grover' rel='stylesheet'>
+<mat-toolbar color="primary" class="navbar">
+  <mat-toolbar-row>
+    <img ngSrc="{{url}}" alt="pikachuPicture" width="120" height="120">
+    <div class="div-title">
+      <span class="title">{{title}}</span>
+    </div>
+    <span class="spacer"></span>
+    <span class="title" *ngIf="type">{{ type }}</span>
+    <button mat-icon-button color="black" *ngIf="!type">
+      <mat-icon>help</mat-icon>
+    </button>
+    <button mat-icon-button color="black" *ngIf="!type">
+      <mat-icon>person</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>

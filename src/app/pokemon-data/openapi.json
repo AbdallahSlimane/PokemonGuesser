@@ -1,0 +1,1613 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "task-list",
+    "version": "0.0.1",
+    "description": "TESTS_LOGICIELS",
+    "contact": {
+      "name": "Willy Noubissie",
+      "email": "willyjunior91@gmail.com"
+    }
+  },
+  "paths": {
+    "/ping": {
+      "get": {
+        "x-controller-name": "PingController",
+        "x-operation-name": "ping",
+        "tags": [
+          "PingController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Ping Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PingResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "PingController.ping"
+      }
+    },
+    "/task-lists/count": {
+      "get": {
+        "x-controller-name": "TaskListController",
+        "x-operation-name": "count",
+        "tags": [
+          "TaskListController"
+        ],
+        "responses": {
+          "200": {
+            "description": "TaskList model count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "TaskList.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<TaskList>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "TaskListController.count"
+      }
+    },
+    "/task-lists/{id}/tasks": {
+      "post": {
+        "x-controller-name": "TaskListTaskController",
+        "x-operation-name": "create",
+        "tags": [
+          "TaskListTaskController"
+        ],
+        "responses": {
+          "200": {
+            "description": "TaskList model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Task"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewTaskInTaskList"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "TaskListTaskController.create"
+      },
+      "patch": {
+        "x-controller-name": "TaskListTaskController",
+        "x-operation-name": "patch",
+        "tags": [
+          "TaskListTaskController"
+        ],
+        "responses": {
+          "200": {
+            "description": "TaskList.Task PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Task.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Task>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TaskPartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "TaskListTaskController.patch"
+      },
+      "get": {
+        "x-controller-name": "TaskListTaskController",
+        "x-operation-name": "find",
+        "tags": [
+          "TaskListTaskController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of TaskList has many Task",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Task"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "TaskListTaskController.find"
+      },
+      "delete": {
+        "x-controller-name": "TaskListTaskController",
+        "x-operation-name": "delete",
+        "tags": [
+          "TaskListTaskController"
+        ],
+        "responses": {
+          "200": {
+            "description": "TaskList.Task DELETE success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Task.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Task>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "TaskListTaskController.delete"
+      }
+    },
+    "/task-lists/{id}": {
+      "put": {
+        "x-controller-name": "TaskListController",
+        "x-operation-name": "replaceById",
+        "tags": [
+          "TaskListController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "TaskList PUT success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TaskList"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "TaskListController.replaceById"
+      },
+      "patch": {
+        "x-controller-name": "TaskListController",
+        "x-operation-name": "updateById",
+        "tags": [
+          "TaskListController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "TaskList PATCH success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TaskListPartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "TaskListController.updateById"
+      },
+      "get": {
+        "x-controller-name": "TaskListController",
+        "x-operation-name": "findById",
+        "tags": [
+          "TaskListController"
+        ],
+        "responses": {
+          "200": {
+            "description": "TaskList model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TaskListWithRelations"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TaskList.Filter"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "TaskListController.findById"
+      },
+      "delete": {
+        "x-controller-name": "TaskListController",
+        "x-operation-name": "deleteById",
+        "tags": [
+          "TaskListController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "TaskList DELETE success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "TaskListController.deleteById"
+      }
+    },
+    "/task-lists": {
+      "post": {
+        "x-controller-name": "TaskListController",
+        "x-operation-name": "create",
+        "tags": [
+          "TaskListController"
+        ],
+        "responses": {
+          "200": {
+            "description": "TaskList model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TaskList"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewTaskList"
+              }
+            }
+          }
+        },
+        "operationId": "TaskListController.create"
+      },
+      "patch": {
+        "x-controller-name": "TaskListController",
+        "x-operation-name": "updateAll",
+        "tags": [
+          "TaskListController"
+        ],
+        "responses": {
+          "200": {
+            "description": "TaskList PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "TaskList.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<TaskList>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TaskListPartial"
+              }
+            }
+          }
+        },
+        "operationId": "TaskListController.updateAll"
+      },
+      "get": {
+        "x-controller-name": "TaskListController",
+        "x-operation-name": "find",
+        "tags": [
+          "TaskListController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of TaskList model instances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TaskListWithRelations"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TaskList.Filter1"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "TaskListController.find"
+      }
+    },
+    "/tasks/count": {
+      "get": {
+        "x-controller-name": "TaskController",
+        "x-operation-name": "count",
+        "tags": [
+          "TaskController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Task model count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Task.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Task>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "TaskController.count"
+      }
+    },
+    "/tasks/{id}/task-list": {
+      "get": {
+        "x-controller-name": "TaskTaskListController",
+        "x-operation-name": "getTaskList",
+        "tags": [
+          "TaskTaskListController"
+        ],
+        "responses": {
+          "200": {
+            "description": "TaskList belonging to Task",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TaskList"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "TaskTaskListController.getTaskList"
+      }
+    },
+    "/tasks/{id}": {
+      "put": {
+        "x-controller-name": "TaskController",
+        "x-operation-name": "replaceById",
+        "tags": [
+          "TaskController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Task PUT success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Task"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "TaskController.replaceById"
+      },
+      "patch": {
+        "x-controller-name": "TaskController",
+        "x-operation-name": "updateById",
+        "tags": [
+          "TaskController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Task PATCH success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TaskPartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "TaskController.updateById"
+      },
+      "get": {
+        "x-controller-name": "TaskController",
+        "x-operation-name": "findById",
+        "tags": [
+          "TaskController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Task model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TaskWithRelations"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Task.Filter"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "TaskController.findById"
+      },
+      "delete": {
+        "x-controller-name": "TaskController",
+        "x-operation-name": "deleteById",
+        "tags": [
+          "TaskController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Task DELETE success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "TaskController.deleteById"
+      }
+    },
+    "/tasks": {
+      "post": {
+        "x-controller-name": "TaskController",
+        "x-operation-name": "create",
+        "tags": [
+          "TaskController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Task model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Task"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewTask"
+              }
+            }
+          }
+        },
+        "operationId": "TaskController.create"
+      },
+      "patch": {
+        "x-controller-name": "TaskController",
+        "x-operation-name": "updateAll",
+        "tags": [
+          "TaskController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Task PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Task.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Task>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TaskPartial"
+              }
+            }
+          }
+        },
+        "operationId": "TaskController.updateAll"
+      },
+      "get": {
+        "x-controller-name": "TaskController",
+        "x-operation-name": "find",
+        "tags": [
+          "TaskController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Task model instances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TaskWithRelations"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Task.Filter1"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "TaskController.find"
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "http://127.0.0.1:3000"
+    }
+  ],
+  "components": {
+    "schemas": {
+      "Task": {
+        "title": "Task",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "title": {
+            "type": "string"
+          },
+          "desc": {
+            "type": "string"
+          },
+          "isComplete": {
+            "type": "boolean"
+          },
+          "taskListId": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "title"
+        ],
+        "additionalProperties": false
+      },
+      "NewTask": {
+        "title": "NewTask",
+        "type": "object",
+        "description": "(tsType: Omit<Task, 'id'>, schemaOptions: { title: 'NewTask', exclude: [ 'id' ] })",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "desc": {
+            "type": "string"
+          },
+          "isComplete": {
+            "type": "boolean"
+          },
+          "taskListId": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "title"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "Omit<Task, 'id'>"
+      },
+      "TaskListWithRelations": {
+        "title": "TaskListWithRelations",
+        "type": "object",
+        "description": "(tsType: TaskListWithRelations, schemaOptions: { includeRelations: true })",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "title": {
+            "type": "string"
+          },
+          "color": {
+            "type": "string"
+          },
+          "tasks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TaskWithRelations"
+            }
+          }
+        },
+        "required": [
+          "title"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "TaskListWithRelations"
+      },
+      "TaskWithRelations": {
+        "title": "TaskWithRelations",
+        "type": "object",
+        "description": "(tsType: TaskWithRelations, schemaOptions: { includeRelations: true })",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "title": {
+            "type": "string"
+          },
+          "desc": {
+            "type": "string"
+          },
+          "isComplete": {
+            "type": "boolean"
+          },
+          "taskListId": {
+            "type": "number"
+          },
+          "taskList": {
+            "$ref": "#/components/schemas/TaskListWithRelations"
+          }
+        },
+        "required": [
+          "title"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "TaskWithRelations"
+      },
+      "TaskPartial": {
+        "title": "TaskPartial",
+        "type": "object",
+        "description": "(tsType: Partial<Task>, schemaOptions: { partial: true })",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "title": {
+            "type": "string"
+          },
+          "desc": {
+            "type": "string"
+          },
+          "isComplete": {
+            "type": "boolean"
+          },
+          "taskListId": {
+            "type": "number"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "Partial<Task>"
+      },
+      "TaskList": {
+        "title": "TaskList",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "title": {
+            "type": "string"
+          },
+          "color": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "title"
+        ],
+        "additionalProperties": false
+      },
+      "NewTaskList": {
+        "title": "NewTaskList",
+        "type": "object",
+        "description": "(tsType: Omit<TaskList, 'id'>, schemaOptions: { title: 'NewTaskList', exclude: [ 'id' ] })",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "color": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "title"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "Omit<TaskList, 'id'>"
+      },
+      "TaskListPartial": {
+        "title": "TaskListPartial",
+        "type": "object",
+        "description": "(tsType: Partial<TaskList>, schemaOptions: { partial: true })",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "title": {
+            "type": "string"
+          },
+          "color": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "Partial<TaskList>"
+      },
+      "NewTaskInTaskList": {
+        "title": "NewTaskInTaskList",
+        "type": "object",
+        "description": "(tsType: @loopback/repository-json-schema#Optional<Omit<Task, 'id'>, 'taskListId'>, schemaOptions: { title: 'NewTaskInTaskList', exclude: [ 'id' ], optional: [ 'taskListId' ] })",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "desc": {
+            "type": "string"
+          },
+          "isComplete": {
+            "type": "boolean"
+          },
+          "taskListId": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "title"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository-json-schema#Optional<Omit<Task, 'id'>, 'taskListId'>"
+      },
+      "PingResponse": {
+        "type": "object",
+        "title": "PingResponse",
+        "properties": {
+          "greeting": {
+            "type": "string"
+          },
+          "date": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "headers": {
+            "type": "object",
+            "properties": {
+              "Content-Type": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": true
+          }
+        }
+      },
+      "loopback.Count": {
+        "type": "object",
+        "title": "loopback.Count",
+        "x-typescript-type": "@loopback/repository#Count",
+        "properties": {
+          "count": {
+            "type": "number"
+          }
+        }
+      },
+      "TaskList.ScopeFilter": {
+        "type": "object",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "uniqueItems": true
+              }
+            ]
+          },
+          "include": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {},
+              "additionalProperties": true
+            }
+          }
+        },
+        "additionalProperties": false,
+        "title": "TaskList.ScopeFilter"
+      },
+      "TaskList.IncludeFilter.Items": {
+        "title": "TaskList.IncludeFilter.Items",
+        "type": "object",
+        "properties": {
+          "relation": {
+            "type": "string",
+            "enum": [
+              "tasks"
+            ]
+          },
+          "scope": {
+            "$ref": "#/components/schemas/TaskList.ScopeFilter"
+          }
+        }
+      },
+      "TaskList.Filter": {
+        "type": "object",
+        "title": "TaskList.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "title": {
+                    "type": "boolean"
+                  },
+                  "color": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "title",
+                    "color"
+                  ],
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "TaskList.Fields"
+          },
+          "include": {
+            "title": "TaskList.IncludeFilter",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/TaskList.IncludeFilter.Items"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<TaskList>"
+      },
+      "TaskList.Filter1": {
+        "type": "object",
+        "title": "TaskList.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "title": "TaskList.WhereFilter",
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "title": {
+                    "type": "boolean"
+                  },
+                  "color": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "title",
+                    "color"
+                  ],
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "TaskList.Fields"
+          },
+          "include": {
+            "title": "TaskList.IncludeFilter",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/TaskList.IncludeFilter.Items"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<TaskList>"
+      },
+      "Task.ScopeFilter": {
+        "type": "object",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "uniqueItems": true
+              }
+            ]
+          },
+          "include": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {},
+              "additionalProperties": true
+            }
+          }
+        },
+        "additionalProperties": false,
+        "title": "Task.ScopeFilter"
+      },
+      "Task.IncludeFilter.Items": {
+        "title": "Task.IncludeFilter.Items",
+        "type": "object",
+        "properties": {
+          "relation": {
+            "type": "string",
+            "enum": [
+              "taskList"
+            ]
+          },
+          "scope": {
+            "$ref": "#/components/schemas/Task.ScopeFilter"
+          }
+        }
+      },
+      "Task.Filter": {
+        "type": "object",
+        "title": "Task.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "title": {
+                    "type": "boolean"
+                  },
+                  "desc": {
+                    "type": "boolean"
+                  },
+                  "isComplete": {
+                    "type": "boolean"
+                  },
+                  "taskListId": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "title",
+                    "desc",
+                    "isComplete",
+                    "taskListId"
+                  ],
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "Task.Fields"
+          },
+          "include": {
+            "title": "Task.IncludeFilter",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Task.IncludeFilter.Items"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Task>"
+      },
+      "Task.Filter1": {
+        "type": "object",
+        "title": "Task.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "title": "Task.WhereFilter",
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "title": {
+                    "type": "boolean"
+                  },
+                  "desc": {
+                    "type": "boolean"
+                  },
+                  "isComplete": {
+                    "type": "boolean"
+                  },
+                  "taskListId": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "title",
+                    "desc",
+                    "isComplete",
+                    "taskListId"
+                  ],
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "Task.Fields"
+          },
+          "include": {
+            "title": "Task.IncludeFilter",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Task.IncludeFilter.Items"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Task>"
+      }
+    }
+  }
+}
