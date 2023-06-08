@@ -23,7 +23,7 @@ import {ScreenComponent} from './components/screen/screen.component';
     MatIconModule,
     NgOptimizedImage,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
   ]
 })
 export class SharedModule {
