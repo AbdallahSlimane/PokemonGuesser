@@ -1,4 +1,13 @@
 {
+  "admin": [
+    {
+      "number": 1,
+      "email": "admin@pokemon.com",
+      "password": "admin"
+    }
+  ]
+  ,
+
   "pokemon": [
     {
       "number": 1,
