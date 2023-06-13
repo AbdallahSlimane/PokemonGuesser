@@ -9,18 +9,21 @@ import {ScreenComponent} from './components/screen/screen.component';
 import { ButtonComponent } from './components/button/button.component';
 import {FormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
+import { CardComponent } from './components/card/card.component';
 
 
 @NgModule({
   declarations: [
     NavbarComponent,
     ScreenComponent,
-    ButtonComponent
+    ButtonComponent,
+    CardComponent
   ],
   exports: [
     NavbarComponent,
     ScreenComponent,
-    ButtonComponent
+    ButtonComponent,
+    CardComponent
   ],
     imports: [
         CommonModule,

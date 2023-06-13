@@ -11,6 +11,8 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import {HttpClientModule} from "@angular/common/http";
 import { ListPokemonComponent } from './pages/list-pokemon/list-pokemon.component';
+import {MatCardModule} from "@angular/material/card";
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 
 @NgModule({
@@ -29,7 +31,9 @@ import { ListPokemonComponent } from './pages/list-pokemon/list-pokemon.componen
     MatButtonModule,
     MatIconModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatCardModule,
+    MatPaginatorModule
   ]
 })
 export class AdminModule { }

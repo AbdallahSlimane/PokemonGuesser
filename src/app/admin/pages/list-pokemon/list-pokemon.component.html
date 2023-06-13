@@ -1,1 +1,25 @@
-<p>list-pokemon works!</p>
+<app-navbar [type]="'ADMIN'"></app-navbar>
+<app-screen class="container" [width]="'95'" [height]="'80'">
+  <div id="top">
+    <div id="divSearchBar">
+      <input matInput autocomplete="false" type="search" id="searchBar" name="searchBar" placeholder="Rechercher...">
+    </div>
+    <div id="divButton">
+      <app-button class="addButton" [type]="'button'" [width]="'50'" [color]="'black'" [text]="'Ajouter un pokemon'"></app-button>
+    </div>
+  </div>
+
+  <div id="divCard">
+    <app-card *ngFor="let pokemon of pokemonList" [cardTitle]="pokemon.name" [class]="'card-listPokemon'">
+      <app-button [type]="'button'" [width]="'10'" [color]="'black'" [text]="'Détail'"></app-button>
+      <app-button [type]="'button'" [width]="'10'" [color]="'red'" [text]="'Supprimer'"></app-button>
+    </app-card>
+  </div>
+  <mat-paginator id="paginator" [length]="150"
+                 [pageSize]="10"
+                 [pageSizeOptions]="[10]"
+                 aria-label="Select page"
+                 (page)="onPageChange($event)">
+  </mat-paginator>
+</app-screen>
+
