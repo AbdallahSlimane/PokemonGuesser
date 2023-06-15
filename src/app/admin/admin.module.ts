@@ -13,12 +13,18 @@ import {HttpClientModule} from "@angular/common/http";
 import { ListPokemonComponent } from './pages/list-pokemon/list-pokemon.component';
 import {MatCardModule} from "@angular/material/card";
 import {MatPaginatorModule} from "@angular/material/paginator";
+import { AddEditPokemonComponent } from './pages/add-edit-pokemon/add-edit-pokemon.component';
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatRadioModule} from "@angular/material/radio";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatSelectModule} from "@angular/material/select";
 
 
 @NgModule({
   declarations: [
     ConnexionComponent,
-    ListPokemonComponent
+    ListPokemonComponent,
+    AddEditPokemonComponent
   ],
   imports: [
     CommonModule,
@@ -33,7 +39,11 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     FormsModule,
     HttpClientModule,
     MatCardModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatDialogModule,
+    MatRadioModule,
+    MatDatepickerModule,
+    MatSelectModule
   ]
 })
 export class AdminModule { }

@@ -1,8 +1,10 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Pokemon} from "../../../interfaces";
-import {PokemonService} from "../../../services/pokemon.service";
+import {PokemonService} from "../../../services/pokemon/pokemon.service";
 import {Subscription} from "rxjs";
 import { PageEvent } from '@angular/material/paginator';
+import {MatDialog} from "@angular/material/dialog";
+import {AddEditPokemonComponent} from "../add-edit-pokemon/add-edit-pokemon.component";
 
 
 @Component({
@@ -13,11 +15,12 @@ import { PageEvent } from '@angular/material/paginator';
 export class ListPokemonComponent implements OnInit, OnDestroy {
   private pokemonSubscription: Subscription | undefined;
   public pokemonList: Pokemon[] | undefined;
-
+  public nbPokemon: number | undefined;
   private pageIndex:number = 1;
   private pageSize: number = 10;
 
-  constructor(private pokemonService: PokemonService) {
+  constructor(private pokemonService: PokemonService, private dialog: MatDialog) {
+
   }
 
   ngOnInit(): void {
@@ -28,12 +31,16 @@ export class ListPokemonComponent implements OnInit, OnDestroy {
     this.pokemonSubscription = this.pokemonService.getPokemonListPaginate(pageIndex,pageSize).subscribe({
       next: (res) => {
         this.pokemonList = res;
+        //TODO: this.nbPokemon = this.pokemonService.getPokemonListCount();
+        this.nbPokemon = this.pokemonService.getPokemonListCount();
+
       },
       error: (err) => {
         console.log(err);
       }
     })
   }
+
 
   onPageChange(event: PageEvent): void {
     const pageIndex = event.pageIndex + 1;
@@ -46,4 +53,50 @@ export class ListPokemonComponent implements OnInit, OnDestroy {
     }
   }
 
+
+
+  openAddPokemonForm() {
+    const dialogRef = this.dialog.open(AddEditPokemonComponent);
+    dialogRef.afterClosed().subscribe({
+      next: (val) => {
+        if (val) {
+          this.getPokemonList(this.pageIndex, this.pageSize);
+        }
+      },
+    });
+  }
+
+  openEditPokemonForm(id: number) {
+    this.pokemonSubscription = this.pokemonService.fetchPokemonById(id).subscribe({
+      next: (res) => {
+        const dialogRef = this.dialog.open(AddEditPokemonComponent, { data: res });
+        dialogRef.afterClosed().subscribe({
+          next: (val) => {
+            if (val) {
+              this.getPokemonList(this.pageIndex, this.pageSize);
+            }
+          },
+        });
+      },
+      error: () => {
+        console.log("Une erreur s'est produite lors de la récupération des informations.");
+      }
+    });
+  }
+
+  deletePokemon(id: number) {
+
+    this.pokemonSubscription = this.pokemonService.deletePokemon(id).subscribe({
+      next: (res) => {
+        if(res) {
+          this.getPokemonList(this.pageIndex, this.pageSize);
+        }
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    })
+
+
+  }
 }

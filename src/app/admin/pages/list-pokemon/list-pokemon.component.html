@@ -5,17 +5,17 @@
       <input matInput autocomplete="false" type="search" id="searchBar" name="searchBar" placeholder="Rechercher...">
     </div>
     <div id="divButton">
-      <app-button class="addButton" [type]="'button'" [width]="'50'" [color]="'black'" [text]="'Ajouter un pokemon'"></app-button>
+      <app-button (click)="openAddPokemonForm()" class="addButton" [type]="'button'" [width]="'50'" [color]="'black'" [text]="'Ajouter un pokemon'"></app-button>
     </div>
   </div>
 
   <div id="divCard">
     <app-card *ngFor="let pokemon of pokemonList" [cardTitle]="pokemon.name" [class]="'card-listPokemon'">
-      <app-button [type]="'button'" [width]="'10'" [color]="'black'" [text]="'Détail'"></app-button>
-      <app-button [type]="'button'" [width]="'10'" [color]="'red'" [text]="'Supprimer'"></app-button>
+      <app-button (click)="openEditPokemonForm(pokemon.id)" [type]="'button'" [width]="'10'" [color]="'black'" [text]="'Détail'"></app-button>
+      <app-button (click)="deletePokemon(pokemon.id)" [type]="'button'" [width]="'10'" [color]="'red'" [text]="'Supprimer'"></app-button>
     </app-card>
   </div>
-  <mat-paginator id="paginator" [length]="150"
+  <mat-paginator id="paginator" [length]="nbPokemon"
                  [pageSize]="10"
                  [pageSizeOptions]="[10]"
                  aria-label="Select page"
