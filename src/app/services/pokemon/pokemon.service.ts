@@ -23,9 +23,6 @@ export class PokemonService{
     );
   }
 
-  /*getPokemonListPaginate(pageIndex: number, pageSize: number) {
-    return this.http.get<Pokemon[]>(`http://localhost:3000/pokemon?_page=` + pageIndex + '&_limit='+ pageSize);
-  }*/
 
   getAllPokemon() {
     return this.http.get<Pokemon[]>(`http://localhost:3000/pokemon`);

@@ -15,6 +15,7 @@ export class AddEditPokemonComponent implements OnInit, OnDestroy {
   public nbPokemon: number | undefined;
   empForm: FormGroup;
 
+
   types: string[] = [
     'bug',
     'dark',
@@ -76,7 +77,7 @@ export class AddEditPokemonComponent implements OnInit, OnDestroy {
           },
           error: () => {
             console.log("Une erreur s'est produite lors de la récupération des informations.");
-            this.dialogRef.close(true);
+            this.dialogRef.close(false);
           }
         })
       } else {
@@ -87,7 +88,7 @@ export class AddEditPokemonComponent implements OnInit, OnDestroy {
           },
           error: () => {
             console.log("Une erreur s'est produite lors de la récupération des informations.");
-            this.dialogRef.close(true);
+            this.dialogRef.close(false);
           }
         })
       }

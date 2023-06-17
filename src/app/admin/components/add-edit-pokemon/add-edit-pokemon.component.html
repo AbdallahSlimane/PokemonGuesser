@@ -39,7 +39,7 @@
     <div class="row">
       <mat-form-field appearance="outline">
         <mat-label>Attaque</mat-label>
-        <input matInput placeholder="Ex. 4" type="number" formControlName="attack" required>
+        <input matInput placeholder="Ex. 4" type="number" formControlName="attack" min="0" required>
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Légendaire</mat-label>
@@ -50,11 +50,11 @@
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Poids</mat-label>
-        <input matInput placeholder="Ex. 12" type="number" formControlName="weight" required>
+        <input matInput placeholder="Ex. 12" type="number" formControlName="weight" min="0" required>
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Taille</mat-label>
-        <input matInput placeholder="Ex. 12" type="number" formControlName="height" required>
+        <input matInput placeholder="Ex. 12" type="number" formControlName="height" min="0" required>
       </mat-form-field>
 
     </div>
