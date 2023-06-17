@@ -7,38 +7,45 @@
   padding-top: 1%;
 }
 
+#divBack {
+  display: inline-block;
+  width: 10%;
+  margin-left: 1%;
+}
+
 #divSearchBar {
   display: inline-block;
-  width: 70%;
+  width: 60%;
 }
 
 #searchBar {
-  margin-left: 5%;
-  width: 50%;
   height: 40px;
   background-color: #252525;
   color: #C4C4C4;
   border: 0;
   border-radius: 1%;
   padding-left: 1%;
+  width: 50%;
+  margin-right: 2%;
 }
 
 #divButton {
   display: inline-block;
   width: 30%;
+  margin-left: -12%;
 }
 
 .addButton {
-  margin-left: 40%;
+  margin-left: 72%;
 }
 
 #divCard {
   margin-top: 4%;
-
 }
 
-#paginator {
+::ng-deep .ngx-pagination {
   position: fixed;
   bottom: 0;
-  width: 100%;
+  right: 0;
 }
+

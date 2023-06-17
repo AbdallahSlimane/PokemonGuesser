@@ -4,7 +4,6 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 import {PokemonService} from "../../../services/pokemon/pokemon.service";
 import {Subscription} from "rxjs";
 import {Pokemon} from "../../../interfaces";
-import {MessageInfoService} from "../../../services/messageInfo/message-info.service";
 
 @Component({
   selector: 'app-add-edit-pokemon',
@@ -13,6 +12,7 @@ import {MessageInfoService} from "../../../services/messageInfo/message-info.ser
 })
 export class AddEditPokemonComponent implements OnInit, OnDestroy {
   private pokemonSubscription: Subscription | undefined;
+  public nbPokemon: number | undefined;
   empForm: FormGroup;
 
   types: string[] = [
@@ -41,6 +41,7 @@ export class AddEditPokemonComponent implements OnInit, OnDestroy {
     private pokemonService: PokemonService,
     private dialogRef: MatDialogRef<AddEditPokemonComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Pokemon
+
   ) {
     this.empForm = this.fb.group({
       name: '',
@@ -54,14 +55,9 @@ export class AddEditPokemonComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnDestroy(): void {
-    if (this.pokemonSubscription) {
-      this.pokemonSubscription.unsubscribe();
-    }
-  }
-
   ngOnInit(): void {
     this.empForm.patchValue(this.data);
+    this.setTotalPokemonNumber();
   }
 
   onFormSubmit() {
@@ -71,8 +67,11 @@ export class AddEditPokemonComponent implements OnInit, OnDestroy {
     } else {
       pokemon = this.createPokemon();
       if (!this.data) {
+        if(this.nbPokemon){
+          pokemon.id = this.nbPokemon + 1;
+        }
         this.pokemonSubscription = this.pokemonService.addPokemon(pokemon).subscribe({
-          next: (res) => {
+          next: () => {
             this.dialogRef.close(true);
           },
           error: () => {
@@ -83,7 +82,7 @@ export class AddEditPokemonComponent implements OnInit, OnDestroy {
       } else {
         pokemon.id = this.data.id;
         this.pokemonSubscription = this.pokemonService.updatePokemon(pokemon).subscribe({
-          next: (res) => {
+          next: () => {
             this.dialogRef.close(true);
           },
           error: () => {
@@ -93,6 +92,17 @@ export class AddEditPokemonComponent implements OnInit, OnDestroy {
         })
       }
     }
+  }
+
+  setTotalPokemonNumber() {
+    this.pokemonSubscription = this.pokemonService.getNumberPokemonList().subscribe({
+      next: (res) => {
+        this.nbPokemon = res;
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    })
   }
 
   private createPokemon() {
@@ -112,6 +122,12 @@ export class AddEditPokemonComponent implements OnInit, OnDestroy {
     };
 
     return pokemon;
-
   }
+
+  ngOnDestroy(): void {
+    if (this.pokemonSubscription) {
+      this.pokemonSubscription.unsubscribe();
+    }
+  }
+
 }

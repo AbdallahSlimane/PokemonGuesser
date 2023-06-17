@@ -20,9 +20,6 @@ export class ConnexionComponent implements OnDestroy{
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
   passwordFormControl = new FormControl('', [Validators.required]);
 
-  getErrorMessage(){
-    return this.errorMessage;
-  }
   submit() {
     this.adminSubscription = this.adminService.getCredentials(this.emailInput, this.passwordInput).subscribe({
       next: (res) => {
@@ -36,6 +33,10 @@ export class ConnexionComponent implements OnDestroy{
         this.errorMessage = "Une erreur s'est produite lors de la récupération des informations.";
       }
     })
+  }
+
+  getErrorMessage(){
+    return this.errorMessage;
   }
 
   ngOnDestroy(): void {
