@@ -20,7 +20,8 @@
   </div>
 
   <div id="divCard">
-    <app-card *ngFor="let pokemon of pokemonList | filterPokemon: propertyFilterChoice: term | paginate: { itemsPerPage: 10, currentPage: p }" [cardTitle]="pokemon.name" [class]="'card-listPokemon'">
+    <app-card *ngFor="let pokemon of pokemonList | filterPokemon: propertyFilterChoice: term | paginate: { itemsPerPage: 10, currentPage: p }"
+              [cardTitle]="pokemon.name" [class]="'card-listPokemon'" [url]="'assets/images/pokemon-list/' + pokemon.id + pokemon.name + '.webp'" >
       <app-button (click)="openEditPokemonForm(pokemon)" [type]="'button'" [width]="'10'" [color]="'black'" [text]="'Détail'"></app-button>
       <app-button (click)="deletePokemon(pokemon.id)" [type]="'button'" [width]="'10'" [color]="'red'" [text]="'Supprimer'"></app-button>
     </app-card>
