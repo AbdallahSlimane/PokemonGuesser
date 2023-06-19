@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpParams} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {Pokemon} from "../../interfaces";
 import {map, Observable} from "rxjs";
 
@@ -10,19 +10,36 @@ export class PokemonService{
   constructor(private http: HttpClient) {
   }
 
+  private types: string[] = [
+    'bug',
+    'dark',
+    'dragon',
+    'electric',
+    'fairy',
+    'fighting',
+    'fire',
+    'flying',
+    'ghost',
+    'grass',
+    'ground',
+    'ice',
+    'normal',
+    'poison',
+    'psychic',
+    'rock',
+    'steel',
+    'water'
+  ];
+
+  getAllTypes() {
+    return this.types;
+  }
+
   getNumberPokemonList(){
     return this.http.get<Pokemon[]>('http://localhost:3000/pokemon').pipe(
       map(pokemonList => pokemonList.length)
     );
   }
-
-  getPokemonByName(name: string){
-    const params = new HttpParams().set('name', name);
-    return this.http.get<Pokemon[]>('http://localhost:3000/pokemon', {params}).pipe(
-      map(pokemonList => pokemonList[0])
-    );
-  }
-
 
   getAllPokemon() {
     return this.http.get<Pokemon[]>(`http://localhost:3000/pokemon`);
