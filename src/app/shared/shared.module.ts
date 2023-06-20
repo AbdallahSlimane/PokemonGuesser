@@ -10,6 +10,10 @@ import { ButtonComponent } from './components/button/button.component';
 import {FormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import { CardComponent } from './components/card/card.component';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
+import {MatDialogModule} from "@angular/material/dialog";
 
 
 @NgModule({
@@ -22,19 +26,33 @@ import { CardComponent } from './components/card/card.component';
   exports: [
     NavbarComponent,
     ScreenComponent,
+    MatToolbarModule,
+    MatIconModule,
+    MatCardModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatAutocompleteModule,
+    MatInputModule,
+    ScreenComponent,
     ButtonComponent,
-    CardComponent
+    CardComponent,
+    MatDialogModule
   ],
-    imports: [
-        CommonModule,
-        MatToolbarModule,
-        MatIconModule,
-        NgOptimizedImage,
-        MatCardModule,
-        MatButtonModule,
-        FormsModule,
-        MatInputModule,
-    ]
+  imports: [
+    CommonModule,
+    NgOptimizedImage,
+    MatToolbarModule,
+    MatIconModule,
+    MatCardModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatAutocompleteModule,
+    MatInputModule,
+    FormsModule,
+    MatDialogModule
+  ],
 })
 export class SharedModule {
 }
