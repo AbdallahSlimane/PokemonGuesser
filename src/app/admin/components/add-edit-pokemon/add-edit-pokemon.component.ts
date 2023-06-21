@@ -11,31 +11,10 @@ import {Pokemon} from "../../../interfaces";
   styleUrls: ['./add-edit-pokemon.component.scss']
 })
 export class AddEditPokemonComponent implements OnInit, OnDestroy {
-  private pokemonSubscription: Subscription | undefined;
-  public nbPokemon: number | undefined;
+  private pokemonSubscription!: Subscription;
+  public nbPokemon!: number;
   empForm: FormGroup;
-
-
-  types: string[] = [
-    'bug',
-    'dark',
-    'dragon',
-    'electric',
-    'fairy',
-    'fighting',
-    'fire',
-    'flying',
-    'ghost',
-    'grass',
-    'ground',
-    'ice',
-    'normal',
-    'poison',
-    'psychic',
-    'rock',
-    'steel',
-    'water'
-  ];
+  types!: string[];
 
   constructor(
     private fb: FormBuilder,
@@ -59,6 +38,7 @@ export class AddEditPokemonComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.empForm.patchValue(this.data);
     this.setTotalPokemonNumber();
+    this.types = this.pokemonService.getAllTypes();
   }
 
   onFormSubmit() {

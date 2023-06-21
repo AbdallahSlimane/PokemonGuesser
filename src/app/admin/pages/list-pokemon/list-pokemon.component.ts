@@ -5,6 +5,8 @@ import {Subscription} from "rxjs";
 import {MatPaginator} from '@angular/material/paginator';
 import {MatDialog} from "@angular/material/dialog";
 import {AddEditPokemonComponent} from "../../components/add-edit-pokemon/add-edit-pokemon.component";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {AdminEnum} from "../../../enum";
 
 
 @Component({
@@ -17,7 +19,6 @@ export class ListPokemonComponent implements OnInit, OnDestroy {
   public pokemonList!: Pokemon[];
   p: number = 1;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-
   term!: string;
   propertyFilterChoice!: string;
   properties: string[] = [
@@ -25,7 +26,7 @@ export class ListPokemonComponent implements OnInit, OnDestroy {
     'type'
   ];
 
-  constructor(private pokemonService: PokemonService, private dialog: MatDialog) {
+  constructor(private pokemonService: PokemonService, private dialog: MatDialog, private matSnackBar: MatSnackBar) {
   }
   ngOnInit(): void {
     this.getPokemonList();
@@ -48,9 +49,13 @@ export class ListPokemonComponent implements OnInit, OnDestroy {
     dialogRef.afterClosed().subscribe({
       next: (val) => {
         if (val) {
+          this.openSnackBar(AdminEnum.SUCCESSFUL, AdminEnum.POKEMON_ADD);
           this.getPokemonList();
         }
       },
+      error: () => {
+        this.openSnackBar(AdminEnum.FAILED, AdminEnum.POKEMON_ADD);
+      }
     });
   }
 
@@ -59,9 +64,13 @@ export class ListPokemonComponent implements OnInit, OnDestroy {
     dialogRef.afterClosed().subscribe({
       next: (val) => {
         if (val) {
+          this.openSnackBar(AdminEnum.SUCCESSFUL, AdminEnum.POKEMON_UPDATED);
           this.getPokemonList();
         }
       },
+      error: () => {
+        this.openSnackBar(AdminEnum.FAILED, AdminEnum.POKEMON_UPDATED);
+      }
     });
 
   }
@@ -70,12 +79,20 @@ export class ListPokemonComponent implements OnInit, OnDestroy {
     this.pokemonSubscription = this.pokemonService.deletePokemon(id).subscribe({
       next: (res) => {
         if(res) {
+          this.openSnackBar(AdminEnum.SUCCESSFUL, AdminEnum.POKEMON_DELETED);
           this.getPokemonList();
         }
       },
-      error: (err) => {
-        console.log(err);
+      error: () => {
+        this.openSnackBar(AdminEnum.SUCCESSFUL, AdminEnum.POKEMON_DELETED);
       }
+    })
+  }
+
+  openSnackBar(message: string, action: string){
+    this.matSnackBar.open(message, action, {
+      duration: 1000,
+      verticalPosition: "top"
     })
   }
 
