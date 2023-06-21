@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams} from "@angular/common/http";
-import {Admin} from "../../interfaces";
+import {Admin} from "../../model/interfaces";
 import {map} from "rxjs";
 
 @Injectable({

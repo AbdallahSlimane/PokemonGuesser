@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { PokemonService } from './pokemon.service';
-import { Pokemon } from '../interfaces/pokemon.interface';
-import {PokemonLegendaryStatus} from "../enum/pokemon-legendary-status.enum";
-import {PokemonEvolution} from "../enum/pokemon-evolution.enum";
-import { Clue} from "../model/clue.class";
+import { PokemonService } from '../pokemon/pokemon.service';
+import { Pokemon } from '../../model/interfaces';
+import {PokemonLegendaryStatus} from "../../enum/pokemon-legendary-status.enum";
+import {PokemonEvolution} from "../../enum/pokemon-evolution.enum";
+import { Clue} from "../../model/clue.class";
 import {Observable} from "rxjs";
 
 @Injectable({
@@ -18,7 +18,7 @@ export class GuessingGameService {
   constructor(private pokemonService: PokemonService) { }
 
   initializeGame() {
-    this.pokemonService.getPokemonList().subscribe(pokemonList => {
+    this.pokemonService.getAllPokemon().subscribe(pokemonList => {
       this.pokemon = pokemonList[Math.floor(Math.random() * pokemonList.length)];
       this.evolutionDisplay = this.getEvolutionDisplay(this.pokemon?.evolutions);
       this.legendaryDisplay = this.getLegendaryDisplay(this.pokemon?.legendary);
@@ -26,7 +26,7 @@ export class GuessingGameService {
   }
 
   getPokemonList(): Observable<Pokemon[]> {
-    return this.pokemonService.getPokemonList();
+    return this.pokemonService.getAllPokemon();
   }
 
 

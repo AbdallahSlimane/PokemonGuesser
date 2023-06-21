@@ -3,7 +3,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {PokemonService} from "../../../services/pokemon/pokemon.service";
 import {Subscription} from "rxjs";
-import {Pokemon} from "../../../interfaces";
+import {Pokemon} from "../../../model/interfaces";
 
 @Component({
   selector: 'app-add-edit-pokemon',

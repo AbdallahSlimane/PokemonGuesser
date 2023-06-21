@@ -1,0 +1,42 @@
+.input-container {
+  display: flex;
+  justify-content: center;
+}
+
+.mat-mdc-form-field-infix {
+  flex: auto;
+  width: 50vh;
+  box-sizing: border-box;
+}
+
+.grayed-out {
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+.guesser-title {
+  font-family: "rosario", sans-serif;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 13%;
+}
+
+.response-error {
+  font-family: "rosario", sans-serif;
+  font-weight: 600;
+  text-align: center;
+  color: darkred;
+}
+
+.response-good {
+  font-family: "rosario", sans-serif;
+  font-weight: 600;
+  text-align: center;
+  color: darkgreen;
+}
+
+.red-text {
+  color: red;
+}
+
+/*# sourceMappingURL=guesser.component.css.map */

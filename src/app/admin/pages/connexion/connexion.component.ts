@@ -24,7 +24,7 @@ export class ConnexionComponent implements OnDestroy{
     this.adminSubscription = this.adminService.getCredentials(this.emailInput, this.passwordInput).subscribe({
       next: (res) => {
         if(res.length == 1){
-          this.router.navigate(['admin/list']).then()
+          this.router.navigate(['admin/list']).then();
         }else {
           this.errorMessage = "Les identifiants sont incorrectes !"
         }

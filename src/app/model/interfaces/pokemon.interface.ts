@@ -1,5 +1,5 @@
-import {PokemonLegendaryStatus} from "../enum/pokemon-legendary-status.enum";
-import {PokemonEvolution} from "../enum/pokemon-evolution.enum";
+import {PokemonLegendaryStatus} from "../../enum/pokemon-legendary-status.enum";
+import {PokemonEvolution} from "../../enum/pokemon-evolution.enum";
 
 export interface Pokemon {
   id: number,

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {RuleComponent} from "./components/rule/rule.component";
-import {GuesserComponent} from "./components/guesser/guesser.component";
+import {RuleComponent} from "./pages/rule/rule.component";
+import {GuesserComponent} from "./pages/guesser/guesser.component";
 
 const routes: Routes = [
   { path: '', component: GuesserComponent},

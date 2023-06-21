@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RuleComponent } from './components/rule/rule.component';
-import { GuesserComponent } from './components/guesser/guesser.component';
+import { RuleComponent } from './pages/rule/rule.component';
+import { GuesserComponent } from './pages/guesser/guesser.component';
 import {SharedModule} from "../shared/shared.module";
 import {RouterModule} from "@angular/router";
 import {GameRoutingModule} from "./game-routing.module";

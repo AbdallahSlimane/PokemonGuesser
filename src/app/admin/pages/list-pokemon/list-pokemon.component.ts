@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
-import {Pokemon} from "../../../interfaces";
+import {Pokemon} from "../../../model/interfaces";
 import {PokemonService} from "../../../services/pokemon/pokemon.service";
 import {Subscription} from "rxjs";
 import {MatPaginator} from '@angular/material/paginator';

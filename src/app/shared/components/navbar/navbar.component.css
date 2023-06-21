@@ -22,4 +22,10 @@
   height: 2px;
 }
 
+.buttonPikachu {
+  background-color: #252525;
+  border: 0;
+  cursor: pointer;
+}
+
 /*# sourceMappingURL=navbar.component.css.map */

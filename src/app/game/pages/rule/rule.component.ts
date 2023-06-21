@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-rule',
@@ -6,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./rule.component.scss']
 })
 export class RuleComponent {
+  constructor(private router: Router) {
+  }
+  redirectToGame() {
+    this.router.navigate(['guesser/']).then();
+  }
 
 }

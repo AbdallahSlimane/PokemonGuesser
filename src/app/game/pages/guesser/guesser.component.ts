@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {GuessingGameService} from "../../../services/guessing-game.service";
+import {GuessingGameService} from "../../../services/game/guessing-game.service";
 import {PokemonEvolution} from "../../../enum/pokemon-evolution.enum";
 import {PokemonLegendaryStatus} from "../../../enum/pokemon-legendary-status.enum";
 import {Observable, of} from "rxjs";
 import {FormControl} from "@angular/forms";
 import {map, switchMap} from "rxjs/operators";
 import {MatDialog} from "@angular/material/dialog";
-import {AnswerDialogComponent} from "../answer-dialog/answer-dialog.component";
+import {AnswerDialogComponent} from "../../components/answer-dialog/answer-dialog.component";
 
 
 @Component({
