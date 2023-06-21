@@ -1,0 +1,29 @@
+.content {
+  padding-top: 10px;
+  font-size: 100%;
+}
+.row {
+  display: flex;
+  gap: 10px;
+
+  mat-form-field {
+    width: 100%;
+  }
+}
+
+.action {
+  padding: 0 25px 20px;
+  button {
+    flex: 1;
+  }
+}
+
+.row1 {
+  width: 60%;
+  margin-right: 5%;
+}
+
+#buttonSubmit {
+  background-color: #252525;
+  color: white;
+}

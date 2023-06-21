@@ -1,0 +1,66 @@
+<div mat-dialog-title>
+  <h1>Pokemon Form</h1>
+</div>
+<form [formGroup]="empForm" (ngSubmit)="onFormSubmit()">
+  <div mat-dialog-content class="content">
+    <div class="row">
+      <div class="row1">
+        <mat-form-field appearance="outline">
+          <mat-label>Nom</mat-label>
+            <input matInput type="text" placeholder="Ex. Pikachu" formControlName="name" required>
+        </mat-form-field>
+      </div>
+      <div class="row2">
+        <mat-radio-group aria-label="Select an option" formControlName="evolutions" required>
+          <mat-label><b>EVC</b></mat-label>
+          <mat-radio-button [value]="1">1</mat-radio-button>
+          <mat-radio-button [value]="2">2</mat-radio-button>
+          <mat-radio-button [value]="3">3</mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </div>
+
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Type 1</mat-label>
+        <mat-select formControlName="type1" required>
+          <mat-option *ngFor="let val of types" [value]="val">{{val}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Type 2</mat-label>
+        <mat-select formControlName="type2" required>
+          <mat-option *ngFor="let val of types" [value]="val">{{val}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Attaque</mat-label>
+        <input matInput placeholder="Ex. 4" type="number" formControlName="attack" min="0" required>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Légendaire</mat-label>
+        <mat-select formControlName="legendary" required>
+          <mat-option [value]="1">Oui</mat-option>
+          <mat-option [value]="0">Non</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Poids</mat-label>
+        <input matInput placeholder="Ex. 12" type="number" formControlName="weight" min="0" required>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Taille</mat-label>
+        <input matInput placeholder="Ex. 12" type="number" formControlName="height" min="0" required>
+      </mat-form-field>
+
+    </div>
+  </div>
+  <div mat-dialog-actions class="action">
+    <button mat-raised-button type="button" [mat-dialog-close]="false">Annuler</button>
+    <button mat-raised-button id="buttonSubmit" type="submit">{{data ? 'Sauvegarder': 'Ajouter'}}</button>
+  </div>
+</form>

@@ -1,0 +1,31 @@
+.container{
+  h1{
+    font-size: 50px;
+    text-align: center;
+    font-family: 'Irish Grover', serif;
+    padding-bottom: 1%;
+  }
+
+  .connection-container mat-form-field{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 10%;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
+}
+
+.connection-submit-button {
+  margin-left: 15%;
+}
+
+#errorMessage {
+  margin-left: 5%;
+  margin-bottom: 5%;
+}
+
+
+
+
