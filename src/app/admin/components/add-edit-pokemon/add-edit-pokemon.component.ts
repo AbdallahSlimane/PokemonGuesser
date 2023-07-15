@@ -1,4 +1,4 @@
-import {Component, Inject, OnDestroy, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Inject, OnDestroy, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {PokemonService} from "../../../services/pokemon/pokemon.service";
@@ -8,6 +8,7 @@ import {Pokemon} from "../../../model/interfaces";
 @Component({
   selector: 'app-add-edit-pokemon',
   templateUrl: './add-edit-pokemon.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./add-edit-pokemon.component.scss']
 })
 export class AddEditPokemonComponent implements OnInit, OnDestroy {

@@ -1,6 +1,5 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {GuessingGameService} from "../../../services/game/guessing-game.service";
-import {PokemonEvolution} from "../../../enum/pokemon-evolution.enum";
 import {PokemonLegendaryStatus} from "../../../enum/pokemon-legendary-status.enum";
 import {Observable, of} from "rxjs";
 import {FormControl} from "@angular/forms";
@@ -12,11 +11,12 @@ import {AnswerDialogComponent} from "../../components/answer-dialog/answer-dialo
 @Component({
   selector: 'app-guesser',
   templateUrl: './guesser.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./guesser.component.scss']
 })
 export class GuesserComponent implements OnInit{
   myControls: FormControl[] = [];
-  filteredOptions: Observable<string[]>[] = [];
+  filteredOptions$: Observable<string[]>[] = [];
 
   inputs: string[] = [
     'First attempt',
@@ -39,7 +39,7 @@ export class GuesserComponent implements OnInit{
 
     this.inputs.forEach((input, index) => {
       this.myControls[index] = new FormControl('');
-      this.filteredOptions[index] = this.myControls[index].valueChanges.pipe(
+      this.filteredOptions$[index] = this.myControls[index].valueChanges.pipe(
         switchMap(value => this._filter(value || ''))
       );
     });
@@ -66,14 +66,6 @@ export class GuesserComponent implements OnInit{
 
   get pokemon() {
     return this.gameService.pokemon;
-  }
-
-  getEvolution(evolution: PokemonEvolution | undefined): string {
-    return this.gameService.getEvolutionDisplay(evolution);
-  }
-
-  getLegendary(legendary: PokemonLegendaryStatus | undefined): string {
-    return this.gameService.getLegendaryDisplay(legendary);
   }
 
   checkAnswer(answer: string, index: number) {

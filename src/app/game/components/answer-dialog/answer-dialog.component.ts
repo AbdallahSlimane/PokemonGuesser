@@ -8,4 +8,8 @@ import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 })
 export class AnswerDialogComponent {
   constructor(@Inject(MAT_DIALOG_DATA) public data: {name: string, id: number}) {}
+
+  replay() {
+    location.reload();
+  }
 }

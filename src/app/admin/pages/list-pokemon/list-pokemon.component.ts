@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {Pokemon} from "../../../model/interfaces";
 import {PokemonService} from "../../../services/pokemon/pokemon.service";
 import {Subscription} from "rxjs";
@@ -12,6 +12,7 @@ import {AdminEnum} from "../../../enum";
 @Component({
   selector: 'app-list-pokemon',
   templateUrl: './list-pokemon.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./list-pokemon.component.scss']
 })
 export class ListPokemonComponent implements OnInit, OnDestroy {
