@@ -1,0 +1,30 @@
+<app-navbar [type]="'ADMIN'"></app-navbar>
+<app-screen class="container" [width]="'95'" [height]="'80'">
+  <div id="top">
+    <div id="divBack">
+      <app-button class="" [type]="'button'" [width]="'5'" [color]="'black'" [text]="'Retour'"></app-button>
+    </div>
+    <div id="divSearchBar">
+      <input type="text" id="searchBar" [(ngModel)]="term" placeholder="Rechercher...">
+      <mat-form-field appearance="outline">
+        <mat-label>Filtrer sur </mat-label>
+        <mat-select [(ngModel)]="propertyFilterChoice">
+          <mat-option *ngFor="let val of properties" [value]="val">{{val}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div id="divButton">
+      <app-button (click)="openAddPokemonForm()" class="addButton" [type]="'button'" [width]="'50'" [color]="'black'" [text]="'Ajouter un pokemon'"></app-button>
+    </div>
+  </div>
+
+  <div id="divCard">
+    <app-card *ngFor="let pokemon of pokemonList | filterPokemon: propertyFilterChoice: term | paginate: { itemsPerPage: 10, currentPage: p }"
+              [cardTitle]="pokemon.name" [class]="'card-listPokemon'" [url]="'assets/images/pokemon-list/' + pokemon.id + pokemon.name + '.webp'" >
+      <app-button (click)="openEditPokemonForm(pokemon)" [type]="'button'" [width]="'10'" [color]="'black'" [text]="'Détail'"></app-button>
+      <app-button (click)="deletePokemon(pokemon.id)" [type]="'button'" [width]="'10'" [color]="'red'" [text]="'Supprimer'"></app-button>
+    </app-card>
+  </div>
+  <pagination-controls (pageChange)="p = $event" ></pagination-controls>
+</app-screen>

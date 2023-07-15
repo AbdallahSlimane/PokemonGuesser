@@ -1,0 +1,43 @@
+.rule-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.rule-title {
+  font-family: "rosario", sans-serif;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 7.5%;
+}
+
+.rule-content {
+  margin-right: 5%;
+  margin-left: 5%;
+  text-align: center;
+}
+
+.rule-item {
+  margin-bottom: 10px;
+}
+
+.rule-number {
+  font-weight: bold;
+}
+
+.rule-text {
+  font-family: "rosario", sans-serif;
+  margin-bottom: 3%;
+}
+
+.rule-button {
+  padding-bottom: 4px;
+  padding-top: 4px;
+  border-radius: 10px;
+  background-color: black;
+  color: white;
+  width: 40%;
+  margin: 20px auto 7.5%;
+}
+
+/*# sourceMappingURL=rule.component.css.map */

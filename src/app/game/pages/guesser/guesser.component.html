@@ -1,0 +1,44 @@
+<app-navbar></app-navbar>
+<app-screen [height]="'75'" [width]="'45'">
+  <div>
+    <h2 class="guesser-title">Guess'em ALL</h2>
+
+    <div *ngIf="clues.showType1" class="response-error">
+      <p>First type: {{ pokemon?.type1 }}</p>
+    </div>
+
+    <div *ngIf="clues.showType2" class="response-error">
+      <p>Second type: {{ pokemon?.type2 }}</p>
+    </div>
+
+    <div *ngIf="clues.showEvolution" class="response-error">
+      <p>Evolution: {{ pokemon?.evolutions | evolution }}</p>
+    </div>
+
+    <div *ngIf="clues.showLegendary" class="response-error">
+      <p>Legendary: {{ pokemon?.legendary | legendary }}</p>
+    </div>
+
+    <div *ngIf="clues.showAttack" class="response-error">
+      <p>Attack: {{ pokemon?.attack }}, critical hit, 2 hp left</p>
+    </div>
+
+
+    <div *ngFor="let input of inputs; let i = index" class="input-container">
+      <div *ngIf="inputsVisible[i]">
+        <mat-form-field class="mat-mdc-form-field-infix" appearance="fill">
+          <input type="text" placeholder="{{ input }}" aria-label="Number" matInput
+                 [(ngModel)]="answers[i]"
+                 [readonly]="i !== currentInputIndex" [formControl]="myControls[i]"
+                 (keyup.enter)="checkAnswer(answers[i], i)" [matAutocomplete]="auto"
+                 [ngClass]="{'grayed-out': i !== currentInputIndex}">
+          <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+            <mat-option *ngFor="let option of filteredOptions$[i] | async" [value]="option">
+              {{option}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+</app-screen>

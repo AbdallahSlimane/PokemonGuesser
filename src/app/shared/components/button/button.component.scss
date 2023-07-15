@@ -1,0 +1,11 @@
+button {
+  &.black {
+    background-color: #252525;
+    color: white;
+  }
+
+  &.red {
+    background-color: red;
+    color: white;
+  }
+}
