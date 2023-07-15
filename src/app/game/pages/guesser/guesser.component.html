@@ -12,11 +12,11 @@
     </div>
 
     <div *ngIf="clues.showEvolution" class="response-error">
-      <p>Evolution: {{ getEvolution(pokemon?.evolutions) }}</p>
+      <p>Evolution: {{ pokemon?.evolutions | evolution }}</p>
     </div>
 
     <div *ngIf="clues.showLegendary" class="response-error">
-      <p>Legendary: {{ getLegendary(pokemon?.legendary) }}</p>
+      <p>Legendary: {{ pokemon?.legendary | legendary }}</p>
     </div>
 
     <div *ngIf="clues.showAttack" class="response-error">
@@ -33,7 +33,7 @@
                  (keyup.enter)="checkAnswer(answers[i], i)" [matAutocomplete]="auto"
                  [ngClass]="{'grayed-out': i !== currentInputIndex}">
           <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-            <mat-option *ngFor="let option of filteredOptions[i] | async" [value]="option">
+            <mat-option *ngFor="let option of filteredOptions$[i] | async" [value]="option">
               {{option}}
             </mat-option>
           </mat-autocomplete>

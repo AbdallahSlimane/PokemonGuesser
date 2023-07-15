@@ -7,12 +7,16 @@ import {RouterModule} from "@angular/router";
 import {GameRoutingModule} from "./game-routing.module";
 import {FormsModule} from "@angular/forms";
 import {AnswerDialogComponent} from "./components/answer-dialog/answer-dialog.component";
+import {EvolutionPipe} from "./pipes/evolution.pipe";
+import { LegendaryPipe } from './pipes/legendary.pipe';
 
 @NgModule({
   declarations: [
     RuleComponent,
     GuesserComponent,
-    AnswerDialogComponent
+    AnswerDialogComponent,
+    EvolutionPipe,
+    LegendaryPipe,
   ],
     imports: [
         CommonModule,

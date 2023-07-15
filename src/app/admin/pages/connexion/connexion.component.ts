@@ -1,4 +1,4 @@
-import {Component, OnDestroy} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnDestroy} from '@angular/core';
 import {FormControl, Validators} from "@angular/forms";
 import {AdminService} from "../../services/admin.service";
 import {Subscription} from "rxjs";
@@ -7,6 +7,7 @@ import {Router} from "@angular/router";
 @Component({
   selector: 'app-connexion',
   templateUrl: './connexion.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./connexion.component.scss']
 })
 export class ConnexionComponent implements OnDestroy{

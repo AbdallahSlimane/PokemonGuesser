@@ -3,5 +3,5 @@
   <img [src]="'assets/images/pokemon-list/' + data.id + data.name + '.webp'" alt="{{data.name}}">
 </div>
 <div mat-dialog-actions>
-  <button mat-button [mat-dialog-close]="true">OK</button>
+  <button mat-button (click)="replay()">Replay</button>
 </div>
