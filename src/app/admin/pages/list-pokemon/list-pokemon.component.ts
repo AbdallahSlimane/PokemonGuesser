@@ -12,12 +12,12 @@ import {AdminEnum} from "../../../enum";
 @Component({
   selector: 'app-list-pokemon',
   templateUrl: './list-pokemon.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./list-pokemon.component.scss']
 })
 export class ListPokemonComponent implements OnInit, OnDestroy {
   private pokemonSubscription!: Subscription;
   public pokemonList!: Pokemon[];
+  loading = true;
   p: number = 1;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   term!: string;
@@ -38,9 +38,11 @@ export class ListPokemonComponent implements OnInit, OnDestroy {
     this.pokemonSubscription = this.pokemonService.getAllPokemon().subscribe({
       next: (res) => {
         this.pokemonList = res;
+        //this.loading = false;
       },
       error: (err) => {
         console.log(err);
+        //this.loading = false;
       }
     })
   }

@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {ConnexionComponent} from './pages/connexion/connexion.component';
-import {SharedModule} from "../shared/shared.module";
 import {RouterModule} from "@angular/router";
 import {AdminRoutingModule} from "./admin-routing.module";
 import {MatOptionModule} from "@angular/material/core";
@@ -21,6 +20,11 @@ import {MatSelectModule} from "@angular/material/select";
 import {NgxPaginationModule} from 'ngx-pagination';
 import {FilterPokemonPipe} from './pipes/filter-pokemon.pipe';
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {ButtonModule} from "../shared/components/button/button.component";
+import {CardModule} from "../shared/components/card/card.component";
+import {NavBarModule} from "../shared/components/navbar/navbar.component";
+import {ScreenModule} from "../shared/components/screen/screen.component";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 
 @NgModule({
@@ -30,27 +34,31 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
     AddEditPokemonComponent,
     FilterPokemonPipe
   ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    RouterModule,
-    AdminRoutingModule,
-    MatOptionModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    MatButtonModule,
-    MatIconModule,
-    FormsModule,
-    HttpClientModule,
-    MatCardModule,
-    MatPaginatorModule,
-    MatDialogModule,
-    MatRadioModule,
-    MatDatepickerModule,
-    MatSelectModule,
-    NgxPaginationModule,
-    MatSnackBarModule
-  ]
+    imports: [
+        CommonModule,
+        ButtonModule,
+        CardModule,
+        NavBarModule,
+        ScreenModule,
+        RouterModule,
+        AdminRoutingModule,
+        MatOptionModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        MatButtonModule,
+        MatIconModule,
+        FormsModule,
+        HttpClientModule,
+        MatCardModule,
+        MatPaginatorModule,
+        MatDialogModule,
+        MatRadioModule,
+        MatDatepickerModule,
+        MatSelectModule,
+        NgxPaginationModule,
+        MatSnackBarModule,
+        MatProgressSpinnerModule
+    ]
 })
 export class AdminModule {
 }
