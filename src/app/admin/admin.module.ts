@@ -24,6 +24,7 @@ import {ButtonModule} from "../shared/components/button/button.component";
 import {CardModule} from "../shared/components/card/card.component";
 import {NavBarModule} from "../shared/components/navbar/navbar.component";
 import {ScreenModule} from "../shared/components/screen/screen.component";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 
 @NgModule({
@@ -33,30 +34,31 @@ import {ScreenModule} from "../shared/components/screen/screen.component";
     AddEditPokemonComponent,
     FilterPokemonPipe
   ],
-  imports: [
-    CommonModule,
-    ButtonModule,
-    CardModule,
-    NavBarModule,
-    ScreenModule,
-    RouterModule,
-    AdminRoutingModule,
-    MatOptionModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    MatButtonModule,
-    MatIconModule,
-    FormsModule,
-    HttpClientModule,
-    MatCardModule,
-    MatPaginatorModule,
-    MatDialogModule,
-    MatRadioModule,
-    MatDatepickerModule,
-    MatSelectModule,
-    NgxPaginationModule,
-    MatSnackBarModule
-  ]
+    imports: [
+        CommonModule,
+        ButtonModule,
+        CardModule,
+        NavBarModule,
+        ScreenModule,
+        RouterModule,
+        AdminRoutingModule,
+        MatOptionModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        MatButtonModule,
+        MatIconModule,
+        FormsModule,
+        HttpClientModule,
+        MatCardModule,
+        MatPaginatorModule,
+        MatDialogModule,
+        MatRadioModule,
+        MatDatepickerModule,
+        MatSelectModule,
+        NgxPaginationModule,
+        MatSnackBarModule,
+        MatProgressSpinnerModule
+    ]
 })
 export class AdminModule {
 }
