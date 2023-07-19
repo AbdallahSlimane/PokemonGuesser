@@ -1,5 +1,9 @@
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, NgModule} from '@angular/core';
 import {Router} from "@angular/router";
+import {CommonModule, NgOptimizedImage} from "@angular/common";
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatIconModule} from "@angular/material/icon";
+import {MatButtonModule} from "@angular/material/button";
 
 @Component({
   selector: 'app-navbar',
@@ -22,3 +26,11 @@ export class NavbarComponent {
     this.router.navigate(['guesser/rule']).then();
   }
 }
+
+@NgModule({
+  declarations: [NavbarComponent],
+  imports: [CommonModule, MatToolbarModule, MatIconModule, MatButtonModule, NgOptimizedImage],
+  exports: [NavbarComponent]
+})
+
+export class NavBarModule {}

@@ -1,4 +1,6 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, NgModule} from '@angular/core';
+import {CommonModule} from "@angular/common";
+import {MatCardModule} from "@angular/material/card";
 
 @Component({
   selector: 'app-card',
@@ -10,3 +12,11 @@ export class CardComponent {
   @Input() url: string = "/assets/images/Pikachu-navbar.png";
   @Input() class: string = "";
 }
+
+@NgModule({
+  declarations:[CardComponent],
+  imports: [CommonModule, MatCardModule],
+  exports: [CardComponent],
+})
+
+export class CardModule {}

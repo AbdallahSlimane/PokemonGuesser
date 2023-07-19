@@ -1,4 +1,5 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, NgModule} from '@angular/core';
+import {CommonModule} from "@angular/common";
 
 @Component({
   selector: 'app-screen',
@@ -10,3 +11,11 @@ export class ScreenComponent {
   @Input() height: string = "0"
 
 }
+
+@NgModule({
+  declarations: [ScreenComponent],
+  imports: [CommonModule],
+  exports: [ScreenComponent]
+})
+
+export class ScreenModule {}
